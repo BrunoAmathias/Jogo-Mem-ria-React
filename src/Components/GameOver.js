@@ -6,7 +6,7 @@ return(
     (show ?
     <div>
         
-    <div id="gameInit">
+    <div id="gameOver">
         <div>
             Parabéns, você completou o jogo!
         </div>

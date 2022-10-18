@@ -3,17 +3,16 @@ import GameBoard from "./Components/GameBoard";
 import GameOver from "./Components/GameOver";
 import game from "./game/game"
 import InitGame from "./Components/InitGame";
-// import audio_match from './audio/audio_matchcard.wav'
-// import win_game from './audio/audio_wingame.wav'
-// import audio_music_game from './audio/audio_musica-game.mp3'
-// import audio_card_flip from './audio/audio_card-flip.mp3'
+import Audio from "./Components/Audio";
 import { useContext } from "react";
 import { FlipContext } from "./contexto/FlipContext";
 
 
 function MemoryGame(){
+
 const {cards, setCards} = useContext(FlipContext)
 const {gameOver, SetGameOver} = useContext(FlipContext)
+const {musicGame} = useContext(FlipContext)
 
 useEffect(()=>{
 
@@ -25,13 +24,14 @@ function restart(){
 game.clearCards()
 setCards(game.createCardsFromTechs())
 SetGameOver(false)
+musicGame.play()
 }
 
 return(
 
 <div>
-    
-    <GameBoard cards={cards}/>
+   <GameBoard cards={cards}/>
+   <Audio/>
    <GameOver show={gameOver} handleRestart={restart}/>
    <InitGame/>
 </div>
