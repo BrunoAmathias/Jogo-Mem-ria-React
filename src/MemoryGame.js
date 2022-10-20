@@ -13,6 +13,9 @@ function MemoryGame(){
 const {cards, setCards} = useContext(FlipContext)
 const {gameOver, SetGameOver} = useContext(FlipContext)
 const {musicGame} = useContext(FlipContext)
+const {start, Setstart} = useContext(FlipContext)    
+
+
 
 useEffect(()=>{
 
@@ -24,7 +27,8 @@ function restart(){
 game.clearCards()
 setCards(game.createCardsFromTechs())
 SetGameOver(false)
-musicGame.play()
+Setstart(true)
+// musicGame.play()
 }
 
 return(

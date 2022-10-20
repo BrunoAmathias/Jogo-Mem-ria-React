@@ -4,7 +4,6 @@ import audio_match from '../audio/audio_matchcard.wav'
 import win_game from '../audio/audio_wingame.wav'
 import audio_card_flip from '../audio/audio_card-flip.mp3'
 import audio_music_game from '../audio/audio_musica-game.mp3'
-import { useEffect } from "react";
 
 
 
@@ -17,10 +16,7 @@ export const FlipContext = createContext()
 
 export function FlipContextProvider ({children}){
 
-    //move
-
-
-    //---------
+  
 
     // musicas
     
@@ -36,20 +32,16 @@ export function FlipContextProvider ({children}){
     const [musicGame] = useState(new Audio(audio_music_game))
     const [audio, setAudio] = useState(true)
     const [music, setMusic] = useState(true)
+    const [start, Setstart] = useState(true)    
+    const [jsonlocal, setJsonLocal] = useState(false)
+
+    let arrayMoves = []
 
 
 
-    // useEffect(()=>{
-    //     if(audio === false){
-    //         flip.volume = 0.2
-    //     }
-           
-
-    // },[audio])
 
 
 
-  
 
     function Flip(card){
        
@@ -73,10 +65,7 @@ export function FlipContextProvider ({children}){
                             match.muted = true
                         }
                          match.play()
-                      
-                         
                     }, 500);
-                   
                     game.clearCards();
                     if (game.checkGameOver()) {
                       // GameOver
@@ -88,7 +77,18 @@ export function FlipContextProvider ({children}){
                         musicGame.pause()
                         musicGame.currentTime = 0
                         SetGameOver(true)
+                        setMoves(0)
+                        setJsonLocal(true)
                       },1000) 
+                      if(localStorage.moves){
+                        arrayMoves = JSON.parse(localStorage.getItem('moves'))
+                    }
+                    arrayMoves.push(moves)
+                    localStorage.moves = JSON.stringify(arrayMoves)
+
+                    
+
+                      
                     }
                 } else {
                     setTimeout(() => {
@@ -102,12 +102,11 @@ export function FlipContextProvider ({children}){
         }
         setCards([...game.cards])
         }
-        console.log(moves);
 
 
 return(
 
-<FlipContext.Provider value={{Flip , gameOver, SetGameOver, cards, setCards, musicGame, audio, setAudio, music, setMusic}} >
+<FlipContext.Provider value={{Flip , gameOver, SetGameOver, cards, setCards, musicGame, audio, setAudio, music, setMusic, start, Setstart, jsonlocal, setJsonLocal}} >
 {children}
 </FlipContext.Provider>
 

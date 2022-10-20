@@ -141,6 +141,18 @@ body{
   border: 0.2px solid black;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.45);}
 
+  
+
+  .rank{
+    display: flex;
+    
+  }
+    .rank ul {
+      margin-right: 40px ;
+      list-style: none;
+    }
+
+
 
 
 @media only screen and (max-width: 700px) {
