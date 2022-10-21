@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { AiFillAudio, AiOutlineAudioMuted } from "react-icons/ai";
 import {MdOutlineMusicNote, MdOutlineMusicOff} from "react-icons/md"
 import { FlipContext } from '../contexto/FlipContext';
+import '../styles/audio.style.css'
 
 function Audio(){
 

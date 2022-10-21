@@ -1,10 +1,13 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { useContext } from "react";
 import { FlipContext } from "../contexto/FlipContext";
+import '../styles/gameOver.style.css'
+import Rank from "./Rank";
 
 function GameOver({show, handleRestart}){
 
 const {jsonlocal, setJsonLocal} = useContext(FlipContext)
+
 let local = localStorage.nomes
 let moves = localStorage.moves
 
@@ -16,48 +19,15 @@ if(jsonlocal=== true){
 
 
 
-
 return(
     (show ?
     <div>
-        
-    <div id="gameOver">
-        <div>
-        <div className="rank"> 
-        <ul>
-            <li>Nome</li>
-            {
-     local2.map((nome)=>{
-            return(
-                   <li>{nome}   </li> 
-            )
-        })
-       }
-        </ul>
-        <ul>
-            <li>Movimentos</li>
-            {
-          moves2.map((moves)=>{
-            return(
-                <ul>
-                <li>{moves}</li> 
-                 </ul>
-            )
-        })
-        
-        }
-        </ul>
-        </div>
-      
-      
-     
-       
-      
-       
-    
-        </div>
 
-        <div>
+    <div id="gameOver">
+   
+        <Rank local2={local2} moves2={moves2} />
+
+        <div className="gameComplete">
             Parabéns, você completou o jogo!
         </div>
         <button id="btn" onClick={handleRestart} >Jogue novamente</button>

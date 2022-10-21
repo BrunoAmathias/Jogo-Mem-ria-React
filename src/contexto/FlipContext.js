@@ -34,6 +34,8 @@ export function FlipContextProvider ({children}){
     const [music, setMusic] = useState(true)
     const [start, Setstart] = useState(true)    
     const [jsonlocal, setJsonLocal] = useState(false)
+    const [rank, setRank] = useState(false)
+
 
     let arrayMoves = []
 
@@ -106,7 +108,7 @@ export function FlipContextProvider ({children}){
 
 return(
 
-<FlipContext.Provider value={{Flip , gameOver, SetGameOver, cards, setCards, musicGame, audio, setAudio, music, setMusic, start, Setstart, jsonlocal, setJsonLocal}} >
+<FlipContext.Provider value={{Flip , gameOver, SetGameOver, cards, setCards, musicGame, audio, setAudio, music, setMusic, start, Setstart, jsonlocal, setJsonLocal, rank, setRank}} >
 {children}
 </FlipContext.Provider>
 

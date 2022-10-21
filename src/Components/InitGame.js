@@ -3,6 +3,8 @@ import { FlipContext } from "../contexto/FlipContext";
 import { useState, Fragment } from "react"
 import { useEffect } from "react";
 
+import '../styles/initGame.style.css'
+
 
 
 
@@ -12,7 +14,9 @@ function InitGame(){
 const {musicGame} = useContext(FlipContext)
 const {music, setMusic} = useContext(FlipContext)
 const {start, Setstart} = useContext(FlipContext)  
-const [nomes, setNomes] = useState()  
+const [nomes, setNomes] = useState()
+const [input, setInput]  = useState(true)
+let arrayNomes = []  
    
 
 useEffect(()=>{
@@ -22,21 +26,30 @@ useEffect(()=>{
         musicGame.pause() 
     }
     },[music])
-let arrayNomes = []  
+
+// console.log(nomes.length);
 
 function handleStart(){
+
+    if(nomes.length > 2){
     Setstart(false)
     if(music === true){
         musicGame.play()
     }
-    
 
+    if(input === false){
+        setInput(true)
+    }
+    
     if(localStorage.nomes){
         arrayNomes = JSON.parse(localStorage.getItem('nomes'))
     }
 
     arrayNomes.push(nomes)
     localStorage.nomes = JSON.stringify(arrayNomes)
+}else{
+    setInput(false)
+}
 }
 
 
@@ -45,14 +58,10 @@ function ChangeInput(e){
 
 setNomes(e.target.value)
 
-// console.log(e.target.value);
-// array.push(e.target.value)
-// localStorage.meuArr = JSON.stringify(array)
 
 
 
 }
-// let a = localStorage.getItem('nome')
 
 return(
 
@@ -62,12 +71,19 @@ return(
        
             
         <div id="gameInit">
-        <div>
-            <input onInput={ChangeInput} type="text"/>
-        </div>
+      
             <div>
                Jogo da Memória 
             </div>
+            {input ? <div className="container-nome">
+                <p>Insira o seu nome</p>
+            <input onInput={ChangeInput} type="text"/>
+            </div> : <div className="container-nome-false">
+                <p>Insira o seu nome</p>
+            <input onInput={ChangeInput} type="text"/>
+                <p className="text-false">insira um valor maior</p>
+            </div> }
+
             <button id="btn" onClick={handleStart} >Começar o jogo !</button>
         </div>
     

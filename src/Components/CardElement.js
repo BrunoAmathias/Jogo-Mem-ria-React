@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { FlipContext } from "../contexto/FlipContext";
+import '../styles/cardElement.style.css'
 
 function CardElement({card}){
 

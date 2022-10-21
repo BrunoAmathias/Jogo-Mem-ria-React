@@ -1,5 +1,6 @@
 import React from "react";
 import CardElement from "./CardElement";
+import '../styles/gameBoard.style.css'
 
 function GameBoard({cards, handleFlip}){
     
