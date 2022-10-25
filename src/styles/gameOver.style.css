@@ -19,6 +19,7 @@
     border: none;
     border-radius:10px;
     margin-top:10px;
+    cursor: pointer;
 }
 
 .rank{
@@ -52,14 +53,29 @@
     padding: 10px;
     border-radius: 10px;
     border: 1px solid black;
+    cursor: pointer;
 }
 .icon-ranking svg{
     font-size: 30px;
-    color : white
+    color : white;
 }
 .gameComplete{
     font-size: 50px;
 }
+
+.icon-close{
+    position: absolute;
+    top : 15px;
+    right: 15px;
+    background-color: white;
+    border-radius: 9px;
+    padding: 4px;
+}
+.icon-close svg{
+    color: black;
+    cursor:pointer
+}
+
 
 
 @media only screen and (max-width: 780px) {

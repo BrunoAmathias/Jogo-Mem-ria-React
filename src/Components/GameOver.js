@@ -8,12 +8,12 @@ function GameOver({show, handleRestart}){
 
 const {jsonlocal, setJsonLocal} = useContext(FlipContext)
 
-let local = localStorage.nomes
-let moves = localStorage.moves
+let nomesLocal = localStorage.nomes
+let movesLocal = localStorage.moves
 
 if(jsonlocal=== true){
-    var local2 = JSON.parse(local)
-    var moves2 = JSON.parse(moves)
+    var nomes = JSON.parse(nomesLocal)
+    var moves = JSON.parse(movesLocal)
 }
 
 
@@ -25,7 +25,7 @@ return(
 
     <div id="gameOver">
    
-        <Rank local2={local2} moves2={moves2} />
+        <Rank nomes={nomes} moves={moves} />
 
         <div className="gameComplete">
             Parabéns, você completou o jogo!

@@ -1,15 +1,18 @@
 import { useContext } from "react"
 import { FlipContext } from "../contexto/FlipContext"
 import {ImStatsBars2} from "react-icons/im";
+import {AiOutlineClose} from "react-icons/ai"
 import React, { Fragment } from "react";
 
 import '../styles/gameOver.style.css'
 
-function Rank({local2, moves2}){
+function Rank({nomes, moves}){
 
     const {rank, setRank} = useContext(FlipContext)
     
-    
+    function closeRank(){
+        setRank(false)
+    }
     
     function ChangeRank(){
         setRank(!rank)
@@ -18,14 +21,18 @@ function Rank({local2, moves2}){
         
 
     return( <>
-        <div className="icon-ranking">
-        <ImStatsBars2 onClick={ChangeRank}/>
+        <div onClick={ChangeRank} className="icon-ranking">
+        <ImStatsBars2/>
         </div>
        { rank ? <div className="rank"> 
+
+        <div onClick={closeRank} className="icon-close">
+        <AiOutlineClose/>
+        </div>
         <ul>
             <li>Nome</li>
             {
-     local2.map((nome)=>{
+     nomes.map((nome)=>{
             return(<li>{nome}</li>)
         })
         }
@@ -33,7 +40,7 @@ function Rank({local2, moves2}){
         <ul>
             <li>Movimentos</li>
             {
-          moves2.map((moves)=>{
+          moves.map((moves)=>{
             return(<li>{moves}</li> )
         })
         }

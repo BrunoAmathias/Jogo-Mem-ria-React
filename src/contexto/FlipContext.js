@@ -26,6 +26,9 @@ export function FlipContextProvider ({children}){
 
     //---------
 
+
+    // states
+
     const [moves, setMoves] = useState(0)
     const [gameOver, SetGameOver] = useState(false)
     const [cards, setCards] = useState([])
@@ -35,6 +38,8 @@ export function FlipContextProvider ({children}){
     const [start, Setstart] = useState(true)    
     const [jsonlocal, setJsonLocal] = useState(false)
     const [rank, setRank] = useState(false)
+
+    // --------
 
 
     let arrayMoves = []
@@ -46,29 +51,24 @@ export function FlipContextProvider ({children}){
 
 
     function Flip(card){
-       
-    
         if (game.setCard(card.id)) {
         
             if(audio === false){
                 flip.muted = true
             }
-        
-           flip.play()
-        
-           
+                flip.play()
             if (game.secondCard) {
-               
                 setMoves(moves + 1)
 
                 if (game.checkMatch()) {
                     setTimeout(() => {
-                        if(audio === false){
-                            match.muted = true
-                        }
-                         match.play()
-                    }, 500);
-                    game.clearCards();
+                    if(audio === false){
+                        match.muted = true
+                    }
+                        match.play()
+                        }, 500);
+                        game.clearCards();
+
                     if (game.checkGameOver()) {
                       // GameOver
                         setTimeout(()=>{
@@ -82,15 +82,11 @@ export function FlipContextProvider ({children}){
                         setMoves(0)
                         setJsonLocal(true)
                       },1000) 
-                      if(localStorage.moves){
+                    if(localStorage.moves){
                         arrayMoves = JSON.parse(localStorage.getItem('moves'))
                     }
                     arrayMoves.push(moves)
                     localStorage.moves = JSON.stringify(arrayMoves)
-
-                    
-
-                      
                     }
                 } else {
                     setTimeout(() => {
@@ -98,7 +94,6 @@ export function FlipContextProvider ({children}){
                      setCards([...game.cards])
                         game.unflipCards();
                     }, 1000);
-        
                 };
             }
         }
