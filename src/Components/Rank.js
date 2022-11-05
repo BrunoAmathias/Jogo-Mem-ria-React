@@ -20,33 +20,33 @@ function Rank({nomes, moves}){
         }
         
 
-    return( <>
-        <div onClick={ChangeRank} className="icon-ranking">
-        <ImStatsBars2/>
-        </div>
-       { rank ? <div className="rank"> 
-
+return( 
+<>
+    <div onClick={ChangeRank} className="icon-ranking">
+    <ImStatsBars2/>
+    </div>
+    { rank ? <div className="rank"> 
         <div onClick={closeRank} className="icon-close">
         <AiOutlineClose/>
         </div>
         <ul>
-            <li>Nome</li>
-            {
-     nomes.map((nome)=>{
-            return(<li>{nome}</li>)
+        <li>Nome</li>
+        {
+        nomes.map((nome)=>{
+        return(<li>{nome}</li>)
         })
         }
         </ul>
         <ul>
-            <li>Movimentos</li>
-            {
-          moves.map((moves)=>{
-            return(<li>{moves}</li> )
+        <li>Movimentos</li>
+        {
+        moves.map((moves)=>{
+        return(<li>{moves}</li> )
         })
         }
         </ul>
-        </div> : <Fragment/>}
-        </>
-    )
+    </div> : <Fragment/>}
+</>
+)
 }
 export default Rank

@@ -6,16 +6,14 @@ import InitGame from "./Components/InitGame";
 import Audio from "./Components/Audio";
 import { useContext } from "react";
 import { FlipContext } from "./contexto/FlipContext";
-import { useState } from "react";
 
 
 function MemoryGame(){
 
 const {cards, setCards} = useContext(FlipContext)
 const {gameOver, SetGameOver} = useContext(FlipContext)
-const {musicGame} = useContext(FlipContext)
-const {start, Setstart} = useContext(FlipContext)  
-const {rank, setRank} = useContext(FlipContext)
+const {Setstart} = useContext(FlipContext)  
+const {setRank} = useContext(FlipContext)
 
 
 
@@ -24,7 +22,7 @@ useEffect(()=>{
 
 setCards(game.createCardsFromTechs())
 
-},[])
+},[setCards])
 
 function restart(){
 game.clearCards()
@@ -32,7 +30,6 @@ setCards(game.createCardsFromTechs())
 SetGameOver(false)
 Setstart(true)
 setRank(false)
-// musicGame.play()
 }
 
 return(
