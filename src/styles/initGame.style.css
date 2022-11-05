@@ -5,13 +5,16 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
     color: white;
-    font-size: 50px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     top:0;
     left:0
   }
+
+  .tituloGame{
+          font-size: 50px;
+}
 
   .container-nome{
     text-align: center;
@@ -44,5 +47,12 @@
   .text-false{
     font-size: 15px;
     color: red;
+  }
+
+
+@media only screen and (max-width: 400px) {
+     .tituloGame{
+          font-size: 30px;
+}
   }
   
