@@ -50,55 +50,55 @@ export function FlipContextProvider ({children}){
 
 
 
-    function Flip(card){
-        if (game.setCard(card.id)) {
-        
-            if(audio === false){
-                flip.muted = true
-            }
-                flip.play()
-            if (game.secondCard) {
-                setMoves(moves + 1)
+function Flip(card){
+    if (game.setCard(card.id)) {
+    
+        if(audio === false){
+            flip.muted = true
+        }
+            flip.play()
+        if (game.secondCard) {
+            setMoves(moves + 1)
 
-                if (game.checkMatch()) {
-                    setTimeout(() => {
+            if (game.checkMatch()) {
+                setTimeout(() => {
+                if(audio === false){
+                    match.muted = true
+                }
+                    match.play()
+                    }, 500);
+                    game.clearCards();
+
+                if (game.checkGameOver()) {
+                    // GameOver
+                    setTimeout(()=>{
                     if(audio === false){
-                        match.muted = true
+                            win.muted = true
                     }
-                        match.play()
-                        }, 500);
-                        game.clearCards();
-
-                    if (game.checkGameOver()) {
-                      // GameOver
-                        setTimeout(()=>{
-                        if(audio === false){
-                                win.muted = true
-                        }
-                        win.play()
-                        musicGame.pause()
-                        musicGame.currentTime = 0
-                        SetGameOver(true)
-                        setMoves(0)
-                        setJsonLocal(true)
-                      },1000) 
-                    if(localStorage.moves){
-                        arrayMoves = JSON.parse(localStorage.getItem('moves'))
-                    }
-                    arrayMoves.push(moves)
-                    localStorage.moves = JSON.stringify(arrayMoves)
-                    }
-                } else {
-                    setTimeout(() => {
-                     // No match
-                     setCards([...game.cards])
-                        game.unflipCards();
-                    }, 1000);
-                };
-            }
+                    win.play()
+                    musicGame.pause()
+                    musicGame.currentTime = 0
+                    SetGameOver(true)
+                    setMoves(0)
+                    setJsonLocal(true)
+                    },1000) 
+                if(localStorage.moves){
+                    arrayMoves = JSON.parse(localStorage.getItem('moves'))
+                }
+                arrayMoves.push(moves)
+                localStorage.moves = JSON.stringify(arrayMoves)
+                }
+            } else {
+                setTimeout(() => {
+                    // No match
+                    setCards([...game.cards])
+                    game.unflipCards();
+                }, 1000);
+            };
         }
-        setCards([...game.cards])
-        }
+    }
+    setCards([...game.cards])
+    }
 
 
 return(
