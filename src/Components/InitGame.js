@@ -72,7 +72,7 @@ return(
             
         <div id="gameInit">
       
-            <div>
+            <div className="tituloGame">
                Jogo da Memória 
             </div>
             {input ? <div className="container-nome">
