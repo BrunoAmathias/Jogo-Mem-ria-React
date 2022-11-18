@@ -27,24 +27,20 @@
     position: absolute;
     background-color:#05c3ff;
     top: 100px;
-    padding: 40px;
+    padding: 4%;
     border-radius: 10px;
     border: 2px solid white;
     transition: all linear 0.2s;
 }
 .rank ul {
-      margin-right: 40px ;
       list-style: none;
-      font-size: 22px;
+      font-size: 25px;
       text-align: center;
       border: 1px solid black;
       border-radius: 10px;
-      padding: 10px;
+      padding: 30px;
 }
-.rank ul li:first-child{
-    font-size: 40px;
-  
-}
+
 .icon-ranking{
     position: absolute;
     top: 40px;
@@ -75,12 +71,36 @@
     color: black;
     cursor:pointer
 }
+.rank-name-moves{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 0 20px 0 20px;
+}
+.titulo-rank{
+    margin-bottom: 10px;
+    font-size: 25px;
+}
 
 
 
 @media only screen and (max-width: 780px) {
     .gameComplete{
-        font-size: 30px;
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width: 430px) {
+    .rank{
+        padding: 30px
+    }
+    .rank-name-moves{
+        margin: 0 10px 5px 10px;
+    }
+    .rank ul{
+        padding: 20px;
     }
 }
 

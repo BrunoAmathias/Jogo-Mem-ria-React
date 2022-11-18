@@ -12,11 +12,10 @@ function InitGame(){
 
 
 const {musicGame} = useContext(FlipContext)
-const {music, setMusic} = useContext(FlipContext)
+const {music} = useContext(FlipContext)
 const {start, Setstart} = useContext(FlipContext)  
-const [nomes, setNomes] = useState()
+const {nomes, setNomes} = useContext(FlipContext)
 const [input, setInput]  = useState(true)
-let arrayNomes = []  
    
 
 useEffect(()=>{
@@ -25,14 +24,15 @@ useEffect(()=>{
     }else{
         musicGame.pause() 
     }
+    // eslint-disable-next-line
     },[music])
 
-// console.log(nomes.length);
 
 function handleStart(){
 
     if(nomes.length > 2){
     Setstart(false)
+
     if(music === true){
         musicGame.play()
     }
@@ -41,13 +41,8 @@ function handleStart(){
         setInput(true)
     }
     
-    if(localStorage.nomes){
-        arrayNomes = JSON.parse(localStorage.getItem('nomes'))
-    }
-
-    arrayNomes.push(nomes)
-    localStorage.nomes = JSON.stringify(arrayNomes)
-}else{
+   
+    }else{
     setInput(false)
 }
 }
@@ -58,11 +53,7 @@ function ChangeInput(e){
 
 setNomes(e.target.value)
 
-
-
-
 }
-
 return(
 
     (start ?

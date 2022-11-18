@@ -1,31 +1,24 @@
-import React, { Fragment, useState } from "react";
-import { useContext } from "react";
-import { FlipContext } from "../contexto/FlipContext";
+import React, { Fragment } from "react";
 import '../styles/gameOver.style.css'
 import Rank from "./Rank";
 
-function GameOver({show, handleRestart}){
 
-const {jsonlocal, setJsonLocal} = useContext(FlipContext)
+function GameOver({gameOver, handleRestart}){
 
-let nomesLocal = localStorage.nomes
-let movesLocal = localStorage.moves
 
-if(jsonlocal=== true){
-    var nomes = JSON.parse(nomesLocal)
-    var moves = JSON.parse(movesLocal)
-}
+
+
 
 
 
 
 return(
-    (show ?
+    (gameOver ?
     <div>
 
     <div id="gameOver">
    
-        <Rank nomes={nomes} moves={moves} />
+        <Rank gameOver={gameOver}/>
 
         <div className="gameComplete">
             Parabéns, você completou o jogo!
