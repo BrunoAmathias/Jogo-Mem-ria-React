@@ -64,7 +64,6 @@ export function FlipContextProvider ({children}){
                     game.clearCards();
 
                     if (game.checkGameOver()) {
-                      // GameOver
                         setTimeout(()=>{
                             addObjStorage()
                             resetAttributes()
@@ -73,7 +72,6 @@ export function FlipContextProvider ({children}){
                     }
                 } else {
                     setTimeout(() => {
-                     // No match
                      setCards([...game.cards])
                         game.unflipCards();
                     }, 1000);
