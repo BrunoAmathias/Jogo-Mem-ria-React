@@ -7,11 +7,10 @@ import '../styles/initGame.style.css'
 function InitGame(){
 
 const {musicGame} = useContext(FlipContext)
-const {music, setMusic} = useContext(FlipContext)
+const {music} = useContext(FlipContext)
 const {start, Setstart} = useContext(FlipContext)  
 const {nomes, setNomes} = useContext(FlipContext)
 const [input, setInput]  = useState(true)
-let arrayNomes = []  
    
 
 useEffect(()=>{
@@ -22,7 +21,6 @@ useEffect(()=>{
     }
     },[music])
 
-// console.log(nomes.length);
 
 function handleStart(){
 

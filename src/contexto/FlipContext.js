@@ -29,7 +29,7 @@ export function FlipContextProvider ({children}){
     // states
 
     const [moves, setMoves] = useState(0)
-    const [nomes, setNomes] = useState()
+    const [nomes, setNomes] = useState('')
     const [gameOver, SetGameOver] = useState(false)
     const [cards, setCards] = useState([])
     const [musicGame] = useState(new Audio(audio_music_game))
@@ -66,21 +66,10 @@ export function FlipContextProvider ({children}){
                     if (game.checkGameOver()) {
                       // GameOver
                         setTimeout(()=>{
-                        if(audio === false){
-                                win.muted = true
-                        }
-                        win.play()
-                        musicGame.pause()
-                        musicGame.currentTime = 0
-                        SetGameOver(true)
-                        setMoves(0)
-                        setJsonLocal(true)
+                            addObjStorage()
+                            resetAttributes()
                       },1000) 
-                    if(localStorage.moves){
-                        arrayMoves = JSON.parse(localStorage.getItem('moves'))
-                    }
-                    arrayMoves.push(moves)
-                    localStorage.moves = JSON.stringify(arrayMoves)
+
                     }
                 } else {
                     setTimeout(() => {

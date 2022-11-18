@@ -13,6 +13,7 @@ function Rank(){
     const {rank, setRank} = useContext(FlipContext)
     const {storage} = useContext(FlipContext)
     
+    
     function closeRank(){
         setRank(false)
     }
@@ -21,6 +22,10 @@ function Rank(){
         setRank(!rank)
         console.log(rank);
         }
+
+    useEffect(()=>{
+        localStorage.setItem(ObjRank, JSON.stringify(storage))
+    },[storage])
 
         
 
@@ -33,22 +38,34 @@ function Rank(){
         <div onClick={closeRank} className="icon-close">
         <AiOutlineClose/>
         </div>
-        <ul>
-            <li>Nome</li>
+        <div className="rank-name-moves">
+        <div className="titulo-rank"> 
+            <h2>Nomes</h2>
+            </div>
+            <ul>
             {
-     nomes.map((nome)=>{
-            return(<li>{nome}</li>)
-        })
-        }
-        </ul>
-        <ul>
-            <li>Movimentos</li>
+                storage.map(sto =>{
+                    return(
+                        <li>{sto.nomes}</li>
+                    )
+                })
+            }
+            </ul>
+        </div>
+        <div className="rank-name-moves">
+            <div className="titulo-rank"> 
+            <h2>Moves</h2>
+            </div>
+            <ul>
             {
-          moves.map((moves)=>{
-            return(<li>{moves}</li> )
-        })
-        }
-        </ul>
+                storage.map(sto =>{
+                    return(
+                        <li>{sto.moves}</li>
+                    )
+                })
+            }
+            </ul>
+        </div>
         </div> : <Fragment/>}
         </>
     )
