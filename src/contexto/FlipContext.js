@@ -46,7 +46,7 @@ export function FlipContextProvider ({children}){
 
     function Flip(card){
         if (game.setCard(card.id)) {
-            
+        
             if(audio === false){
                 flip.muted = true
             }
@@ -54,36 +54,46 @@ export function FlipContextProvider ({children}){
             if (game.secondCard) {
                 setMoves(moves + 1)
 
-                if (game.checkMatch()) {
-                    setTimeout(() => {
-                    if(audio === false){
-                        match.muted = true
-                    }
-                        match.play()
-                        }, 500);
-                        game.clearCards();
+            if (game.checkMatch()) {
+                setTimeout(() => {
+                if(audio === false){
+                    match.muted = true
+                }
+                    match.play()
+                    }, 500);
+                    game.clearCards();
 
                     if (game.checkGameOver()) {
-                     
+                      // GameOver
                         setTimeout(()=>{
-                            addObjStorage()
-                            resetAttributes()
-                
+                        if(audio === false){
+                                win.muted = true
+                        }
+                        win.play()
+                        musicGame.pause()
+                        musicGame.currentTime = 0
+                        SetGameOver(true)
+                        setMoves(0)
+                        setJsonLocal(true)
                       },1000) 
-                 
+                    if(localStorage.moves){
+                        arrayMoves = JSON.parse(localStorage.getItem('moves'))
+                    }
+                    arrayMoves.push(moves)
+                    localStorage.moves = JSON.stringify(arrayMoves)
                     }
                 } else {
                     setTimeout(() => {
-                        setCards([...game.cards])
+                     // No match
+                     setCards([...game.cards])
                         game.unflipCards();
-
                     }, 1000);
                 };
             }
         }
         setCards([...game.cards])
         }
-        
+
 
 function addObjStorage(){
     const rankObj = {nomes: nomes, moves: moves}
