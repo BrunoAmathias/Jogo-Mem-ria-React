@@ -1,18 +1,18 @@
 import React from "react";
 import CardElement from "./CardElement";
-import '../styles/gameBoard.style.css'
+import {ContainerGameBoard} from '../styles/gameboard.styled'
 
 function GameBoard({cards, handleFlip}){
     
 
     return(
 
-            <div id="gameBoard" >
+            <ContainerGameBoard>
                 
                 {cards.map((card, index)=>
                     <CardElement handleFlip={handleFlip} key={index} card={card} />
                 )}
-            </div>
+            </ContainerGameBoard>
 
     )
 }

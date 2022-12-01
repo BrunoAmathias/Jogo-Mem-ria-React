@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { AiFillAudio, AiOutlineAudioMuted } from "react-icons/ai";
 import {MdOutlineMusicNote, MdOutlineMusicOff} from "react-icons/md"
 import { FlipContext } from '../contexto/FlipContext';
-import '../styles/audio.style.css'
+import {ContainerAudio} from '../styles/audio.styled'
 
 function Audio(){
 
@@ -20,12 +20,12 @@ function Audio(){
     }
 
   return ( 
-  <div className='container-audio'>
+  <ContainerAudio>
     <div onClick={changeAudio} className='audio'>
        {audio ?<AiFillAudio/> : <AiOutlineAudioMuted/>} 
     </div>
     <div onClick={changeMusic} className='audio'>{ music ? <MdOutlineMusicNote/> : <MdOutlineMusicOff/> }</div>
-  </div>
+  </ContainerAudio>
   )
 }
 

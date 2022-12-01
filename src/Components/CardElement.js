@@ -1,24 +1,26 @@
 import React from "react";
 import { useContext } from "react";
 import { FlipContext } from "../contexto/FlipContext";
-import '../styles/cardElement.style.css'
+import {ContainerCardElement,
+        ContainerCardFront,
+        ContainerCardBack} from '../styles/cardElement.styled'
 
 function CardElement({card}){
 
 const {Flip} = useContext(FlipContext)
 
     return(
-            <div  onClick={()=>{Flip(card)}} id={card.id} className={`card ${card.flipped ? 'flip' : ''}`}>
+            <ContainerCardElement flip={card.flipped}  onClick={()=>{Flip(card)}} id={card.id} >
 
-                <div className="card_front">
+                <ContainerCardFront >
                     <img className="icon" 
                     src={`assets/images/${card.icon}.png`}
                     alt={card.icon}/>
-                </div>
-                <div className="card_back">
+                </ContainerCardFront>
+                <ContainerCardBack >
                     {"</>"}
-                </div>
-            </div>
+                </ContainerCardBack>
+            </ContainerCardElement>
     )
 
 

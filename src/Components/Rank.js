@@ -3,8 +3,13 @@ import { FlipContext } from "../contexto/FlipContext"
 import {ImStatsBars2} from "react-icons/im";
 import {AiOutlineClose} from "react-icons/ai"
 import React, { Fragment } from "react";
-import '../styles/gameOver.style.css'
 import { useEffect } from "react";
+import {ContainerIconRanking, 
+        ContainerIconClose, 
+        ContainerNameMoves,
+        ContainerTitleRank,
+        ContainerRanking} from '../styles/rank.styled'
+
 const ObjRank ='ObjRank'
 
 
@@ -30,43 +35,44 @@ function Rank(){
         
 
     return( <>
-        <div onClick={ChangeRank} className="icon-ranking">
+        <ContainerIconRanking onClick={ChangeRank}>
         <ImStatsBars2/>
-        </div>
-       { rank ? <div className="rank"> 
+        </ContainerIconRanking>
+       { rank ? 
+        <ContainerRanking> 
 
-        <div onClick={closeRank} className="icon-close">
-        <AiOutlineClose/>
-        </div>
-        <div className="rank-name-moves">
-        <div className="titulo-rank"> 
-            <h2>Nomes</h2>
-            </div>
-            <ul>
-            {
-                storage.map(sto =>{
-                    return(
-                        <li>{sto.nomes}</li>
-                    )
-                })
-            }
-            </ul>
-        </div>
-        <div className="rank-name-moves">
-            <div className="titulo-rank"> 
-            <h2>Moves</h2>
-            </div>
-            <ul>
-            {
-                storage.map(sto =>{
-                    return(
-                        <li>{sto.moves}</li>
-                    )
-                })
-            }
-            </ul>
-        </div>
-        </div> : <Fragment/>}
+            <ContainerIconClose onClick={closeRank}>
+                <AiOutlineClose/>
+            </ContainerIconClose>
+            <ContainerNameMoves>
+                <ContainerTitleRank> 
+                    <h2>Nomes</h2>
+                </ContainerTitleRank>
+                <ul>
+                {
+                    storage.map(sto =>{
+                        return(
+                            <li>{sto.nomes}</li>
+                        )
+                    })
+                }
+                </ul>
+            </ContainerNameMoves>
+            <ContainerNameMoves>
+                <ContainerTitleRank> 
+                    <h2>Moves</h2>
+                </ContainerTitleRank>
+                <ul>
+                {
+                    storage.map(sto =>{
+                        return(
+                            <li>{sto.moves}</li>
+                        )
+                    })
+                }
+                </ul>
+            </ContainerNameMoves>
+        </ContainerRanking> : <Fragment/>}
         </>
     )
 }

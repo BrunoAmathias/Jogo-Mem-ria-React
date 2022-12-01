@@ -2,7 +2,10 @@ import { useContext } from "react"
 import { FlipContext } from "../contexto/FlipContext";
 import { useState, Fragment } from "react"
 import { useEffect } from "react";
-import '../styles/initGame.style.css'
+import {ContainerInitGame,
+        ContainerTitleGame,
+        ContainerName,
+        ContainerNameFalse} from '../styles/initgame.styled'
 
 function InitGame(){
 
@@ -52,20 +55,24 @@ return(
 
 (start ?
     <div>
-        <div id="gameInit">
-            <div className="tituloGame">
-            Jogo da Memória 
-            </div>
-            {input ? <div className="container-nome">
-            <p>Insira o seu nome</p>
-            <input onInput={ChangeInput} type="text"/>
-            </div> : <div className="container-nome-false">
-            <p>Insira o seu nome</p>
-            <input onInput={ChangeInput} type="text"/>
-            <p className="text-false">insira um valor maior</p>
-            </div> }
+        <ContainerInitGame>
+            <ContainerTitleGame>
+                Jogo da Memória 
+            </ContainerTitleGame>
+            {input ? 
+            <ContainerName>
+                <p>Insira o seu nome</p>
+                <input onInput={ChangeInput} type="text"/>
+            </ContainerName> 
+                : 
+            <ContainerNameFalse>
+                <p>Insira o seu nome</p>
+                <input onInput={ChangeInput} type="text"/>
+                <p className="text-false">insira um valor maior</p>
+            </ContainerNameFalse> 
+            }
             <button id="btn" onClick={handleStart} >Começar o jogo !</button>
-        </div>
+        </ContainerInitGame>
     </div>: 
 <Fragment/>)
 
