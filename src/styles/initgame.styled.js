@@ -22,6 +22,13 @@ export const ContainerInitGame= styled.div`
         padding: 20px;
         border-radius: 10px;
     }
+    form{
+        display: flex;
+        flex-direction: column;
+        p{
+            color: red;
+        }
+    }
     `
 
 export const ContainerTitleGame = styled.div `
@@ -43,6 +50,7 @@ export const ContainerName = styled.div `
         border-radius: 5px;
         text-align: center;
     }
+    
 `
 
 export const ContainerNameFalse = styled.div`

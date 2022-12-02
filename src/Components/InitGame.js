@@ -25,7 +25,9 @@ useEffect(()=>{
     },[music])
 
 
-function handleStart(){
+function handleStart(e){
+    e.preventDefault()
+
 
     if(nomes.length > 2){
     Setstart(false)
@@ -47,6 +49,7 @@ function handleStart(){
 
 
 function ChangeInput(e){
+    e.preventDefault()
 
 setNomes(e.target.value)
 
@@ -62,16 +65,24 @@ return(
             {input ? 
             <ContainerName>
                 <p>Insira o seu nome</p>
-                <input onInput={ChangeInput} type="text"/>
+                <form action="">
+                    <input onInput={ChangeInput} type="text"/>
+                    <button id="btn" onClick={handleStart} >Começar o jogo !</button>
+
+                </form>
             </ContainerName> 
                 : 
             <ContainerNameFalse>
                 <p>Insira o seu nome</p>
-                <input onInput={ChangeInput} type="text"/>
-                <p className="text-false">insira um valor maior</p>
+                <form action="">
+                    <input onInput={ChangeInput} type="text"/>
+                    <p className="text-false">insira um valor maior</p>
+                    <button id="btn" onClick={handleStart} >Começar o jogo !</button>
+                </form>
+
             </ContainerNameFalse> 
-            }
-            <button id="btn" onClick={handleStart} >Começar o jogo !</button>
+            }   
+           
         </ContainerInitGame>
     </div>: 
 <Fragment/>)
